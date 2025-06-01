@@ -1,0 +1,1 @@
+GET http://localhost:3000/api/closest?lat=60.22115&lon=24.8730

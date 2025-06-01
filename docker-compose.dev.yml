@@ -1,0 +1,35 @@
+services:
+  frontend:
+    image: frontend-dev
+    build:
+        context: frontend # The context will pick this directory as the "build context"
+        dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend:/app
+    container_name: frontend
+
+  backend-dev:
+    image: backend-dev
+    build:
+        context: backend # The context will pick this directory as the "build context"
+        dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/app
+      #- node_modules:/app/node_modules
+    user: node
+    container_name: backend
+
+  db:
+    image: postgis/postgis
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    container_name: db
+
+#volumes:
+#  node_modules:
