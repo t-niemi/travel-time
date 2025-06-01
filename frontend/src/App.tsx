@@ -166,6 +166,7 @@ function App() {
   return (
     <>
       <h1>Public transport travel times</h1>
+      <h2>Choose a destination address</h2>
       <div>
         <MapContainer
           className="map"
